@@ -1,0 +1,201 @@
+Results:
+
+    2012: 
+        Setup:
+            batch_size = 1024
+            num_epochs = 150
+            learning_rate = 0.001
+            embedding_dim = 5
+            slidingWindow = 40
+            optimizer = Adam
+            Loss = L1 btw MAE
+        
+        Baseline: 
+            Mean Absolute Error (MAE): 7.3249192946476045
+        
+        CNN:  (only elapsed time)
+            Mean Absolute Error: 6.4833
+
+
+        LSTM: (only elapsed time)
+            Mean Absolute Error: 6.7882
+
+
+
+        Regression (only over time array):
+            MAE: 6.9
+
+
+
+        RandomForest:
+            MAE: 7.61740975302812
+
+
+        Sollten schon besser sein, außer ein Modell ist überall überlegen!
+
+        ! Overfitting !
+        Ensemble (CNN + LSTM + RandomForest + Regression): Mean Absolute Error: 6.8903
+        Average (Baseline für ensemble): 
+        Linear Regression (Weighted average): 
+
+
+        Ensemble besser als Const Modell, Ensemble + Uncertainty nochmal besser
+
+
+
+CNN dynamically
+Ensemble with CNN 2012
+ToDO: CNN for 2017
+Ensemble with CNN 2017 (LSTM + CNN)
+
+
+
+    Hier 2 Modelle besser (CNN + LSTM) und dann den ensemble darauf
+    2017:
+
+
+        Baseline: Mean Absolute Error (MAE): 10.825969678247962
+        Ohne Nans: 10.81
+
+
+        LSTM: Mean Absolute Error:  10.344606669468822
+
+
+
+        CNN: Mean Absolute Error: 10.3439
+
+
+
+Debugging von 
+
+
+
+
+
+
+
+
+
+
+
+
+    RequestPayment:
+
+        LSTM: 5.30940137450228, "best model": Mean Absolute Error: 5.3123
+        Baseline: 5.67
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    2019:
+
+
+        Setup:
+            batch_size = 1024
+            num_epochs = 150
+            learning_rate = 0.001
+            embedding_dim = 5
+            slidingWindow = 40
+            optimizer = Adam
+            Loss = L1 btw MAE
+        
+        CNN: 
+            Mean Absolute Error: 
+
+
+        LSTM:
+            Mean Absolute Error: 36.5333
+
+
+
+        Regression (only over time array):
+            MAE: 
+
+
+
+        RandomForest:
+            MAE:
+
+
+
+        Baseline:
+            Mean Absolute Error (MAE): 37.591746184626466
+
+
+
+
+
+        Ensemble (CNN + LSTM):
+
+        Ensemble (CNN + Regression):
+
+        Ensemble (LSTM + Regression):
+
+        Ensemble (RandomForest + CNN + LSTM):
+
+        Ensemble (RandomForest + CNN + LSTM + regression):
+
+
+
+        Ensemble (regression); (CNN + Regression):
+
+        Ensemble (regression); (LSTM + Regression):
+
+        Ensemble (regression); (RandomForest + CNN + LSTM):
+
+        Ensemble (regression); (RandomForest + CNN + LSTM + regression):
+
+
+
+
+
+Skalierung:
+2017:
+Bei 500 Traces (Training loss von 12 -> 3 / 4)
+
+Bei 2000 Traces
+
+für 2012: Start bei 8 -> 3 / 2
+
+
+For 2017 (200 traces)
+Epoch: 300; Batch 167; Loss: 5.9625
+Epoch: 300; Batch 168; Loss: 6.0174
+Epoch: 300; Batch 169; Loss: 5.7736
+Epoch: 300; Batch 170; Loss: 5.5078
+Epoch: 300; Batch 171; Loss: 6.6839
+Epoch: 300; Batch 172; Loss: 5.7224
+Epoch: 300; Batch 173; Loss: 5.7082
+Testing Now!
+Mean Absolute Error: 12.7656
+
+Question: Why is this so high?
+
+
+And why is my loss lower, when I do it with just 1 sample?
+
+Epoch: 95; Batch 1; Loss: 0.1776
+Epoch: 96; Batch 1; Loss: 0.1916
+Epoch: 97; Batch 1; Loss: 0.2328
+Epoch: 98; Batch 1; Loss: 0.1866
+Epoch: 99; Batch 1; Loss: 0.1678
+Epoch: 100; Batch 1; Loss: 0.1682
+Testing Now!
+Mean Absolute Error: 10.9084
