@@ -1,9 +1,8 @@
 # Project Title
-A brief description of your project, explaining what it does, its main features, and the problem it solves.
+Scripts for the Masterthesis: "Uncertainty aware ensembles methods for predictive process monitoring"
 
-For example:
 
-## Example:
+## General:
 Master Thesis - Process Mining Codebase
 This repository contains code and datasets used for process mining experiments conducted for my master's thesis. It covers event log preprocessing, process model discovery, and evaluation methods.
 
