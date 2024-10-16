@@ -22,7 +22,7 @@ print(f'Using device: {device}')
 
 '''
 
-    Maybe we have a problem here?
+    Create initial embedding. This gets the whole trace without padding or anything.
 
 '''
 def creatingInitialEmbedding(xesDataframe, features_to_index):
@@ -56,27 +56,12 @@ def creatingInitialEmbedding(xesDataframe, features_to_index):
     return categorical_indices, elapsed_time_minutes
 
 
-def z_standardize_non_zero(timestamps_list):
-    # Convert list to NumPy array
-    timestamps_array = np.array(timestamps_list, dtype=float)
-    
-    # Extract non-zero values
-    non_zero_values = timestamps_array[timestamps_array > 0]
-    
-    # Compute mean and standard deviation of non-zero values
-    mean = np.mean(non_zero_values)
-    std = np.std(non_zero_values)
-    
-    print(f"Mean: {mean}, Standard Deviation: {std}")
-    
-    # Create a mask for non-zero values
-    mask = timestamps_array > 0
-    
-    # Apply Z-standardization to non-zero values
-    timestamps_array[mask] = (timestamps_array[mask] - mean) / std
-    
-    return timestamps_array
 
+'''
+
+    Slide over the prefix of the trace here and create the padding with the sliding window
+
+'''
 def createSlidingWindowEmbedding(slidingWindowNumber, arrayInitialEmbedding, elapsedTimeMinutes):
 
     allWindows = []
@@ -98,6 +83,14 @@ def createSlidingWindowEmbedding(slidingWindowNumber, arrayInitialEmbedding, ela
             allWindows.append(listWindow)
             allTimeWindows.append(listTime)
     return allWindows, allTimeWindows
+
+
+'''
+
+    Create tensors from all of the prefixe
+
+'''
+
 
 def creatingTensorsTrainingAndTesting(wholeDataFrame, featuresDfInput, sliding_window):
     array_values_all = []

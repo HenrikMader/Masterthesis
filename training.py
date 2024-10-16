@@ -17,95 +17,15 @@ print(f'Using device: {device}')
 
 
 
-def create_random_forest_remaining(dataloader, featuresToIndex):
-    # Initialize the random forest model for regression
-    model = RandomForestRegressor()
-    
-    # Lists to store features and labels for training
-    all_features = []
-    all_targets = []
-
-    # Iterate through the DataLoader
-    for batch_idx, (inputs_value, inputs_time, targets) in enumerate(dataloader):
-        # Count non-zero items in inputs_value
-        non_zero_counts = torch.sum(inputs_value != 0, dim=1).unsqueeze(dim=1).cpu().numpy()  # Shape: (batch_size,)
-
-        lastItem = inputs_value[:, -1].cpu().numpy()
-        n_classes = len(featuresToIndex)
-        one_hot_encoded = np.eye(n_classes)[np.array(lastItem) - 1]
-
-        # Take the last entry from inputs_time
-        last_entry_times = inputs_time[:, -1].unsqueeze(dim=1).cpu().numpy()  # Shape: (batch_size,)
-        
-        # Combine one-hot encoded features and time-related features
-        #batch_features = np.hstack([one_hot_encoded, last_entry_times])
-
-        combined_features = np.concatenate((one_hot_encoded, last_entry_times), axis=1)
-
-        
-        # Append features and labels to lists
-        all_features.append(one_hot_encoded)
-        all_targets.append(targets.cpu().numpy())
-    
-    # Convert lists to numpy arrays for training
-    X_train = np.concatenate(all_features, axis=0)
-    y_train = np.concatenate(all_targets, axis=0)
-
-    # Check the shapes
-    print("Feature matrix (X_train):", X_train.shape)
-    print("Target vector (y_train):", y_train.shape)
-    
-    # Fit the random forest regression model
-    model.fit(X_train, y_train)
-    
-    # Make predictions on the training data (optional)
-    y_pred = model.predict(X_train)
-    
-    return model
-
-
-def MSELOSS(mean, true):
-    loss = torch.mean((mean - true) ** 2)
-    return loss
-
 def regression_loss(mean, true):
-    ## RMSE
-    # torch.mean((true - mean) ** 2)
-    # torch.mean(torch.abs((true - mean)))
     return torch.mean(torch.abs((true - mean)))
 
 
 
 ## MAE vs RMSE (But always sum as reduction)
 def criterionHans(mean, true, log_var):
-    #print(log_var)
-    #log_var = torch.clamp(log_var, min=-2, max=2)
     precision = torch.exp(-log_var)
 
-    #print(log_var[:5])
-    #print(precision[:5])
-    #print(mean[:5])
-    #print(true[:5])
-    #time.sleep(0.5)
-
-    result = torch.mean(torch.sum((2 * precision) ** 0.5 * torch.abs(true - mean) + log_var / 2, 1), 0)
-    # Check if result is None
-    #if torch.isnan(result):
-    #    print("Result is None. Printing tensors:")
-    #    print("Precision:", precision[:5])
-    #    print("True:", true[:5])
-    #    print("Mean:", mean[:5])
-    #    print("Log_var:", log_var[:5])
-    #    time.sleep(5)
-        #print(log_var)
-        #print(mean)
-        #print(precision)
-        #print(torch.mean(torch.sum((2 * precision) ** .5 * torch.abs(true - mean) + log_var / 2, 1), 0))
-        #time.sleep(5)
-
-
-    # return torch.mean(torch.sum((2 * precision) ** .5 * torch.abs(true - mean) + log_var / 2, 1), 0)
-    # return torch.mean(torch.sum(precision * (true - mean) ** 2 + log_var, 1), 0)
     return torch.mean(torch.sum((2 * precision) ** .5 * torch.abs(true - mean) + log_var / 2, 1), 0)
 
 
