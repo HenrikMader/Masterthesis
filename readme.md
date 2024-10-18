@@ -18,8 +18,7 @@ This repository contains code and datasets used for process mining experiments c
 ## Installation
 1. Clone the repository:
    ```bash
-    git clone https://github.com/yourusername/yourproject.git
-    cd yourproject
+    git clone https://github.com/HenrikMader/Masterthesis.git
 
 2. Create virtual environment & activate it
     python -m venv venv
@@ -49,7 +48,7 @@ Do this with:
 
     - Tune the Hyperparameters accordingly. 
     Important: With numberOfRuns you can say how often you want the ensembles to produce results across the learning rates. Select 1 if this should only run once
-    - Select printing = True if you want to create some plots for the master thesis (f.e the plots of the Accuracy Rejection Curves)
+    - Select printing = True if you want to create some plots (f.e the plots of the Accuracy Rejection Curves)
 
 ## Output files
 Once the main.py is finished, there are different files created.

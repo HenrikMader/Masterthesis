@@ -9,7 +9,9 @@ import time
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
 '''
-    Concrete dropout was not used during master thesis
+    Concrete dropout was not used during master thesis.
+    Look into https://github.com/khanetor/dropout-in-rnn for LSTM implementation
+    Look into https://github.com/hansweytjens/uncertainty for CNN implementation
 '''
 
 
