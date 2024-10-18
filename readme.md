@@ -41,7 +41,7 @@ This repository contains code and datasets used for process mining experiments c
     - Change the train, test and validation paths. 
     - Important: When you want to use models which are already trained (f.e from Google Drive), then you need to select them accordingly:
 
-Do this with:
+    Do this with:
 
     ```bash
     cnn_model = torch.load("./path_to_your_model")
