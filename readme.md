@@ -8,10 +8,9 @@ This repository contains code and datasets used for process mining experiments c
 
 
 ## Table of Contents
-1. [Features](#features)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Output Files](#output)
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Output Files](#output)
 
 
 
