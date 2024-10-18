@@ -45,12 +45,12 @@ Do this with:
     ```bash
 cnn_model = torch.load("./path_to_your_model")
 
-# Instead of this:
-# cnn_model = train(num_epochs_cnn, cnn_model, train_loader, val_loader, learning_rate_cnn)
+    Instead of this:
+    cnn_model = train(num_epochs_cnn, cnn_model, train_loader, val_loader, learning_rate_cnn)
 
-# Tune the Hyperparameters accordingly. 
-# Important: With numberOfRuns you can say how often you want the ensembles to produce results across the learning rates. Select 1 if this should only run once
-# Select printing = True if you want to create plots (f.e the plots of the Accuracy Rejection Curves)
+    Tune the Hyperparameters accordingly. 
+    Important: With numberOfRuns you can say how often you want the ensembles to produce results across the learning rates. Select 1 if this should only run once
+    Select printing = True if you want to create plots (f.e the plots of the Accuracy Rejection Curves)
 
 ## Output files
 Once the main.py is finished, there are different files created.
