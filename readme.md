@@ -42,8 +42,10 @@ This repository contains code and datasets used for process mining experiments c
     - Important: When you want to use models which are already trained (f.e from Google Drive), then you need to select them accordingly:
 
 Do this with:
+
     ```bash
-cnn_model = torch.load("./path_to_your_model")
+    cnn_model = torch.load("./path_to_your_model")
+    ```
 
     Instead of this:
     cnn_model = train(num_epochs_cnn, cnn_model, train_loader, val_loader, learning_rate_cnn)
