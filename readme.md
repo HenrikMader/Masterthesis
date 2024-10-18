@@ -11,6 +11,7 @@ This repository contains code and datasets used for process mining experiments c
 1. [Installation](#installation)
 2. [Usage](#usage)
 3. [Output Files](#output)
+4. [Reading Results](#reading)
 
 
 
@@ -66,7 +67,7 @@ say: train:dataset = torch.load("./train.pt)
 3. results_lstm_cnn_baseline.txt: In this file you will find all of the MAE results across the different Models and learning rates.
 
 
-Reading the results:
+## Reading results
 
 You will see on every learning rate different results, from the base Models and from the Ensembles (Average, Regression, Simple MLP and Complex MLP). The first Word always suggest which model was running. F.e:
 
